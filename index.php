@@ -117,14 +117,14 @@
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fa fa-bars"></i>
                 </button>
-                <p>Pčela radilica</p>  <a class="navbar-brand" href="index.html"><img src="images/pcelanaslov.jpg" width="150" height="100"  class="logo" alt=""></a>
+                <p>Pčela radilica</p>  <a class="navbar-brand" href="index.php"><img src="images/pcelanaslov.jpg" width="150" height="100"  class="logo" alt=""></a>
             </div>
             <!-- End Header Navigation -->
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="navbar-menu">
                 <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
-                    <li class="nav-item active"><a class="nav-link" href="index.html">Početna stranica</a></li>
+                    <li class="nav-item active"><a class="nav-link" href="index.php">Početna stranica</a></li>
                     <li class="nav-item"><a class="nav-link" href="about.html">O nama</a></li>
                     <li class="dropdown">
                         <a href="#" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">Prodavnica</a>
@@ -132,8 +132,7 @@
                             <li><a href="shop.html">Pčelinji proizvodi</a></li>
                             <li><a href="shop-detail.html">Oprema za pčelinjak</a></li>
                             <li><a href="cedjenjemeda.html">Oprema za cedjenje meda</a></li>
-                            <li><a href="transport.html">Oprema za transport košnica</a></li>
-                            <li><a href="my-account.html">Kamioni za transport košnica</a></li>
+                            <li><a href="transportkosnica.html">Oprema za transport košnica</a></li>
                             <li><a href="wishlist.html">Prodaja matica i formiranje društva</a></li>
                         </ul>
                     </li>
