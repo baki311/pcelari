@@ -1,30 +1,5 @@
 <?php
-require_once 'php/konekcija.php'; 
-if(isset($_POST['prijava']))
-{
-  $Ime=$_POST['Ime'];
-  $Sifra=$_POST['Sifra'];
-  $sql=mysql_query("select Sifra from Korisnik where Ime='Ime'");
-  if($row=mysqli_fetch_array($sql))
-  {
-    if( $Sifra==$row['Sifra'])
-    {
-
-      header("localhost:index.php");
-      exit();
-
-    }
-    else echo "Ime ili lozinka nisu tacni";
-
-  }
-}
-
-
-
-
-
-
-
+require 'php/app.php';
 ?>
 <html>
 <link type="text/css" rel="stylesheet" id="dark-mode-custom-link">
@@ -32,13 +7,11 @@ if(isset($_POST['prijava']))
 <style lang="en" type="text/css" id="dark-mode-custom-style"></style>
 <style lang="en" type="text/css" id="dark-mode-native-style"></style>
 <style lang="en" type="text/css" id="dark-mode-native-sheet"></style>
+
 <head>
   <title>Login Page</title>
   <link rel="stylesheet" type="text/css" href="styles.css">
   <style>
-
-
-
     .bee {
       width: 80px;
       height: 50px;
@@ -50,13 +23,9 @@ if(isset($_POST['prijava']))
       transform: translate(0, -10%);
       transition: transform 5s linear;
     }
-
-
-
-
-
   </style>
 </head>
+
 <body>
   <div class="bee" id="bee" style="transform: translate(165.409px, -50%);"></div>
   <meta charset="utf-8">
@@ -93,84 +62,92 @@ if(isset($_POST['prijava']))
             <h4><a href="index.php">Nazad na početnu stranicu</a></h4>
 
             <hr>
-            <h3 class="fs-base pt-4 pb-2">Unesite korisničko ime i lozinku</h3>
-            <form class="needs-validation" novalidate="">
-              <div class="input-group mb-3"><i class="ci-mail position-absolute top-50 translate-middle-y text-muted fs-base ms-3"></i>
-                <input class="form-control rounded-start" type="ime" placeholder="Korisničko ime" required="">
+            <h3 class="fs-base pt-4 pb-2">Unesite email i lozinku</h3>
+
+            <form class="needs-validation" action="php/autentifikacija.php" method="post">
+              <div class="input-group mb-3"><i
+                  class="ci-mail position-absolute top-50 translate-middle-y text-muted fs-base ms-3"></i>
+                <input name="email" class="form-control rounded-start" type="email" placeholder="Email" required="">
               </div>
-              <div class="input-group mb-3"><i class="ci-locked position-absolute top-50 translate-middle-y text-muted fs-base ms-3"></i>
+              <div class="input-group mb-3"><i
+                  class="ci-locked position-absolute top-50 translate-middle-y text-muted fs-base ms-3"></i>
                 <div class="password-toggle w-100">
-                  <input class="form-control" type="sifra" placeholder="Lozinka" required="">
-                  <label class="password-toggle-btn" aria-label="Show/hide password">
+                  <input class="form-control" name="lozinka" type="password" placeholder="Lozinka" required="">
+
+                  <!-- <label class="password-toggle-btn" aria-label="Show/hide password">
                     <input class="password-toggle-check" type="checkbox"><span class="password-toggle-indicator"></span>
-                  </label>
+                  </label> -->
                 </div>
               </div>
-              <div class="d-flex flex-wrap justify-content-between">
+              <!-- <div class="d-flex flex-wrap justify-content-between">
                 <div class="form-check">
                   <input class="form-check-input" type="checkbox" checked="" id="remember_me">
                   <label class="form-check-label" for="remember_me">Zapamti me</label>
                 </div><a class="nav-link-inline fs-sm" href="account-password-recovery.html">Zaboravljena lozinka</a>
-              </div>
+              </div> -->
               <hr class="mt-4">
               <div class="text-end pt-4">
-                <button class="btn btn-primary" name="prijava"><i class="ci-sign-in me-2 ms-n21"></i>Prijava</button>
+                <button class="btn btn-primary" type="submit" name="prijava"><i
+                    class="ci-sign-in me-2 ms-n21"></i>Prijava</button>
               </div>
 
-            </form></div>
+            </form>
           </div>
-        </div>
-        <div class="col-md-6 pt-4 mt-3 mt-md-0">
-          <h2 class="h4 mb-3">Nemate nalog? Registrujte se..</h2>
-          <p class="fs-sm text-muted mb-4">Ovde se možete registrovati..</p>
-
-
-
-          <div class="row gx-4 gy-3">
-            <div class="col-sm-6">
-              <label class="form-label" for="reg-fn">Ime</label>
-              <input class="form-control" name="Ime" type="text" required="" id="reg-fn">
-              <div class="invalid-feedback">Molim Vas unesite vaše ime!</div>
-            </div>
-
-            <div class="col-sm-6">
-              <label class="form-label" for="reg-ln">Prezime</label>
-              <input class="form-control" name="Prezime" type="text" required="" id="reg-ln">
-              <div class="invalid-feedback">Molim Vas unesite vaše prezime!</div>
-            </div>
-
-            <div class="col-sm-6">
-              <label class="form-label" for="reg-email">E-mail adresa</label>
-              <input class="form-control" name="Email" type="email" required="" id="reg-email">
-              <div class="invalid-feedback">Molim Vas unesite vašu email adresu!!</div>
-            </div>
-
-            <div class="col-sm-6">
-              <label class="form-label" for="reg-phone">Broj telefona</label>
-              <input class="form-control" name="Telefon" type="text" required="" id="reg-phone">
-              <div class="invalid-feedback">Molim Vas unesite vaš broj telefona!!</div>
-            </div>
-
-            <div class="col-sm-6">
-              <label class="form-label" for="reg-phone">Adresa</label>
-              <input class="form-control" name="Adresa" type="text" required="" id="reg-phone">
-              <div class="invalid-feedback">Molim Vas unesite vašu adresu!!</div>
-            </div>
-            <div class="col-sm-6">
-              <label class="form-label" for="reg-password">Šifra</label>
-              <input class="form-control" name="Sifra" type="password" required="" id="reg-password">
-              <div class="invalid-feedback">Molim Vas unesite vašu šifru!</div>
-            </div>
-
-            <div class="text-end pt-4">
-              <button class="btn btn-primary" type="prijava"><i class="ci-sign-in me-2 ms-n21"></i>Registracija</button>
-            </div>
-          </div>
-
         </div>
       </div>
+      <div class="col-md-6 pt-4 mt-3 mt-md-0">
+        <h2 class="h4 mb-3">Nemate nalog? Registrujte se..</h2>
+        <p class="fs-sm text-muted mb-4">Ovde se možete registrovati..</p>
+
+
+
+        <div class="row gx-4 gy-3">
+          <div class="col-sm-6">
+            <label class="form-label" for="reg-fn">Ime</label>
+            <input class="form-control" name="Ime" type="text" required="" id="reg-fn">
+            <div class="invalid-feedback">Molim Vas unesite vaše ime!</div>
+          </div>
+
+          <div class="col-sm-6">
+            <label class="form-label" for="reg-ln">Prezime</label>
+            <input class="form-control" name="Prezime" type="text" required="" id="reg-ln">
+            <div class="invalid-feedback">Molim Vas unesite vaše prezime!</div>
+          </div>
+
+          <div class="col-sm-6">
+            <label class="form-label" for="reg-email">E-mail adresa</label>
+            <input class="form-control" name="Email" type="email" required="" id="reg-email">
+            <div class="invalid-feedback">Molim Vas unesite vašu email adresu!!</div>
+          </div>
+
+          <div class="col-sm-6">
+            <label class="form-label" for="reg-phone">Broj telefona</label>
+            <input class="form-control" name="Telefon" type="text" required="" id="reg-phone">
+            <div class="invalid-feedback">Molim Vas unesite vaš broj telefona!!</div>
+          </div>
+
+          <div class="col-sm-6">
+            <label class="form-label" for="reg-phone">Adresa</label>
+            <input class="form-control" name="Adresa" type="text" required="" id="reg-phone">
+            <div class="invalid-feedback">Molim Vas unesite vašu adresu!!</div>
+          </div>
+          <div class="col-sm-6">
+            <label class="form-label" for="reg-password">Šifra</label>
+            <input class="form-control" name="Sifra" type="password" required="" id="reg-password">
+            <div class="invalid-feedback">Molim Vas unesite vašu šifru!</div>
+          </div>
+
+          <div class="text-end pt-4">
+            <button class="btn btn-primary" type="prijava"><i class="ci-sign-in me-2 ms-n21"></i>Registracija</button>
+          </div>
+        </div>
+
+      </div>
     </div>
+  </div>
 
 
 
-  </body></html>
+</body>
+
+</html>
