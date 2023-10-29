@@ -2,6 +2,13 @@
 session_start();
 require 'app.php';
 
+//Register
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['registracija'])) {    
+    register($conn);
+}
+
+
+//Login
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['prijava'])){
     if(empty($_POST['email']) || empty($_POST['lozinka'])){
      die('Morate popuniti polja');
@@ -12,13 +19,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['prijava'])){
     if($user === null)
         die( 'Korisnik nije pronadjen');
          
-        
-    login($user);
-    if(password_verify($_POST['lozinka'], $user['Sifra']))
+    if(password_verify($_POST['lozinka'], $user['Sifra'])){
+        session_regenerate_id();
+        login($user);
         redirect('../index.php');
-    else
-    {
+    }
+    else{
         redirect('../loginforma.php');
     }
+
+}
+
+
+//Logout
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['logout'])) {    
+    logout();
 }
 ?>

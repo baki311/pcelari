@@ -18,6 +18,48 @@ function get_user_by_email($email, $conn){
     return $user;
 }
 
+//Vraca broj korisnika u bazi
+function get_user_count($conn){
+    $sql = "SELECT COUNT(*) FROM korisnik";
+    $res = $conn->query($sql);
+    $count = $res->fetchColumn();
+
+    return $count;
+}
+
+//Registracija korisnika
+function register($conn) {    
+    //podrazumevani id role korisnik
+    $roleUserId = 2;
+
+    $sql  = "INSERT INTO korisnik (KorisnikID,Ime, Prezime, Email, Telefon, Adresa, Sifra, RolaID) VALUES(:id, :ime, :prezime, :email, :telefon, :adresa, :sifra, :rolaId)";
+
+    //Kreiranje sleceg id-ja
+    $lastUserId = get_user_count($conn);
+    ++$lastUserId;  
+
+    $passwordHash = password_hash($_POST['Sifra'], PASSWORD_DEFAULT);
+    
+    $stm = $conn->prepare($sql);
+    $stm->bindParam(':id', $lastUserId, PDO::PARAM_INT);
+    $stm->bindParam(':ime', $_POST['Ime'], PDO::PARAM_STR);
+    $stm->bindParam(':prezime', $_POST['Prezime'], PDO::PARAM_STR);
+    $stm->bindParam(':email', $_POST['Email']);
+    $stm->bindParam(':telefon', $_POST['Telefon']);
+    $stm->bindParam(':adresa', $_POST['Adresa'], PDO::PARAM_STR);
+    $stm->bindParam(':sifra', $passwordHash);
+    $stm->bindParam(':rolaId', $roleUserId, PDO::PARAM_INT);
+
+    $stm->execute();
+
+    $user = get_user_by_email($_POST['Email'], $conn);
+    login($user);
+    
+    redirect('../index.php');
+
+}
+
+//Logovanje korisnika - kreiranje sesije
 function login($user) {
     $_SESSION['email'] = $user['Email'];
 }
@@ -27,10 +69,7 @@ function is_user_logged_in(){
     return isset($_SESSION['email']) ? true:false;
 }
 
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['logout'])) {    
-    logout();
-}
-
+//Logout
 function logout(){          
     session_start();    
     session_destroy();
