@@ -48,7 +48,7 @@
                         <a href="#">
                             <i class="fa fa-shopping-bag"></i>
                             <span class="badge"></span>
-                            <p>Moja korpa</p>
+                            <p>Moja korpa</p> <span class="badge badge-danger"><?php echo get_cart_count(); ?></span>
                         </a>
                     </li>
                 </ul>
@@ -68,24 +68,23 @@
             <a href="#" class="close-side"><i class="fa fa-times"></i></a>
             <li class="cart-box">
                 <ul class="cart-list">
+                    <?php if(isset($_SESSION['cart'])): ?>
+                    <?php foreach($_SESSION['cart'] as $product): ?>
                     <li>
-                        <a href="#" class="photo"><img src="images/img-pro-01.jpg" class="cart-thumb" alt="" /></a>
-                        <h6><a href="#">Delica omtantur </a></h6>
-                        <p>1x - <span class="price">$80.00</span></p>
+                        <a href="#" class="photo"><img src="<?php echo $product['image'] ?>" class="cart-thumb"
+                                alt="" /></a>
+                        <h6><a href="#"><?php echo $product['name'] ?> </a></h6>
+                        <p><?php echo $product['quantity'] ?>x - <span class="price"><?php echo $product['price'] ?>
+                                RSD</span></p>
                     </li>
-                    <li>
-                        <a href="#" class="photo"><img src="images/img-pro-02.jpg" class="cart-thumb" alt="" /></a>
-                        <h6><a href="#">Omnes ocurreret</a></h6>
-                        <p>1x - <span class="price">$60.00</span></p>
-                    </li>
-                    <li>
-                        <a href="#" class="photo"><img src="images/img-pro-03.jpg" class="cart-thumb" alt="" /></a>
-                        <h6><a href="#">Agam facilisis</a></h6>
-                        <p>1x - <span class="price">$40.00</span></p>
-                    </li>
+                    <?php endforeach ?>
+                    <?php else: ?>
+                    <h4>Korpa je prazna.</h4>
+                    <?php endif ?>
                     <li class="total">
                         <a href="korpa.php" class="btn btn-default hvr-hover btn-cart">Pregledaj korpu</a>
-                        <span class="float-right"><strong>Ukupno:</strong>: $180.00</span>
+                        <span
+                            class="float-right"><strong>Ukupno:</strong>:<?php echo get_cart_total_price();?>RSD</span>
                     </li>
                 </ul>
             </li>
