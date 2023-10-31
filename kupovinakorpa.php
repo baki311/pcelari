@@ -1,3 +1,6 @@
+<?php require 'php/app.php'; 
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <!-- Basic -->
@@ -35,53 +38,9 @@
 
 </head>
 
-<body>  <!-- Start Main Top -->
-  <div class="main-top">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-             <div class="custom-select-box">
-                <select id="basic" class="selectpicker show-tick form-control" data-placeholder="$ USD">
-                   <option>¥ JPY</option>
-                   <option>$ USD</option>
-                   <option>€ EUR</option>
-               </select>
-           </div>
-           <div class="right-phone-box">
-            <p>Pozovite nas:- <a href="#"> +381 60 800 100</a></p>
-        </div>
-        <div class="our-link">
-            <ul>
-                <li><a href="#"><i class="fa fa-user s_color"></i> Moj nalog</a></li>
-                <li><a href="#"><i class="fas fa-location-arrow"></i> Lokacija</a></li>
-                <li><a href="#"><i class="fas fa-headset"></i> Kontaktiraj nas</a></li>
-            </ul>
-        </div>
-    </div>
-    
-   <div class="text-slid-box">
-    <div id="offer-box" class="carouselTicker">
-        <ul class="offer-box">
-            <li>
-                <i class="fab fa-opencart"></i> 20% popusta na ramove Promo code: RAMT80
-            </li>
-            <li>
-                <i class="fab fa-opencart"></i> 20% popusta na saće
-            </li>
-            <li>
-                <i class="fab fa-opencart"></i> 10% popusta za korita
-            </li>
-
-        </ul>
-    </div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<!-- End Main Top -->
+<body>
     <?php
-
+include 'gornjiheader.php';
 include 'header.php'; 
 ?>
 
@@ -121,15 +80,18 @@ include 'header.php';
                     <div class="title-left">
                         <h3>Ovde se možete prijaviti</h3>
                     </div>
-                    <h5><a data-toggle="collapse" href="#formLogin" role="button" aria-expanded="false">Klikni za prijavu</a></h5>
+                    <h5><a data-toggle="collapse" href="#formLogin" role="button" aria-expanded="false">Klikni za
+                            prijavu</a></h5>
                     <form class="mt-3 collapse review-form-box" id="formLogin">
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="InputEmail" class="mb-0">Email adresa</label>
-                                <input type="email" class="form-control" id="InputEmail" placeholder="Unesite Email adresu"> </div>
+                                <input type="email" class="form-control" id="InputEmail"
+                                    placeholder="Unesite Email adresu"> </div>
                             <div class="form-group col-md-6">
                                 <label for="InputPassword" class="mb-0">Šifra</label>
-                                <input type="password" class="form-control" id="InputPassword" placeholder="Unesite vašu šifru"> </div>
+                                <input type="password" class="form-control" id="InputPassword"
+                                    placeholder="Unesite vašu šifru"> </div>
                         </div>
                         <button type="submit" class="btn hvr-hover">Prijava</button>
                     </form>
@@ -138,21 +100,26 @@ include 'header.php';
                     <div class="title-left">
                         <h3>Kreirajte nalog</h3>
                     </div>
-                    <h5><a data-toggle="collapse" href="#formRegister" role="button" aria-expanded="false">Klikni ovde da se registruješ</a></h5>
+                    <h5><a data-toggle="collapse" href="#formRegister" role="button" aria-expanded="false">Klikni ovde
+                            da se registruješ</a></h5>
                     <form class="mt-3 collapse review-form-box" id="formRegister">
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="InputName" class="mb-0">Ime</label>
-                                <input type="text" class="form-control" id="InputName" placeholder="Unesite vaše ime"> </div>
+                                <input type="text" class="form-control" id="InputName" placeholder="Unesite vaše ime">
+                            </div>
                             <div class="form-group col-md-6">
                                 <label for="InputLastname" class="mb-0">Prezime</label>
-                                <input type="text" class="form-control" id="InputLastname" placeholder="Unesite vaše prezime"> </div>
+                                <input type="text" class="form-control" id="InputLastname"
+                                    placeholder="Unesite vaše prezime"> </div>
                             <div class="form-group col-md-6">
                                 <label for="InputEmail1" class="mb-0">Email adresa</label>
-                                <input type="email" class="form-control" id="InputEmail1" placeholder="Unesite vašu Email adresu"> </div>
+                                <input type="email" class="form-control" id="InputEmail1"
+                                    placeholder="Unesite vašu Email adresu"> </div>
                             <div class="form-group col-md-6">
                                 <label for="InputPassword1" class="mb-0">Šifra</label>
-                                <input type="password" class="form-control" id="InputPassword1" placeholder=" Unesite vašu šifru"> </div>
+                                <input type="password" class="form-control" id="InputPassword1"
+                                    placeholder=" Unesite vašu šifru"> </div>
                         </div>
                         <button type="submit" class="btn hvr-hover">Registruj se</button>
                     </form>
@@ -164,87 +131,88 @@ include 'header.php';
                         <div class="title-left">
                             <h3>Podaci za dostavu</h3>
                         </div>
-                        <form class="needs-validation" novalidate>
+                        <form id="forma" class="needs-validation" action="php/placanje.php" method="post">
                             <div class="row">
                                 <div class="col-md-6 mb-3">
                                     <label for="firstName">Ime *</label>
-                                    <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
+                                    <input name="ime" type="text" class="form-control" id="firstName" placeholder=""
+                                        value="" required>
                                     <div class="invalid-feedback"> Valid first name is required. </div>
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <label for="lastName">Prezime *</label>
-                                    <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
+                                    <input name="prezime" type="text" class="form-control" id="lastName" placeholder=""
+                                        value="" required>
                                     <div class="invalid-feedback"> Valid last name is required. </div>
                                 </div>
                             </div>
                             <div class="mb-3">
-                                <label for="username">Korisničko ime *</label>
-                                <div class="input-group">
-                                    <input type="text" class="form-control" id="username" placeholder="" required>
-                                    <div class="invalid-feedback" style="width: 100%;"> Your username is required. </div>
+                                <label for="email">Email adresa *</label>
+                                <input name="email" type="email" class="form-control" id="email" placeholder="">
+                                <div class="invalid-feedback"> Please enter a valid email address for shipping updates.
                                 </div>
                             </div>
                             <div class="mb-3">
-                                <label for="email">Email adresa *</label>
-                                <input type="email" class="form-control" id="email" placeholder="">
-                                <div class="invalid-feedback"> Please enter a valid email address for shipping updates. </div>
-                            </div>
-                            <div class="mb-3">
                                 <label for="address">Adresa *</label>
-                                <input type="text" class="form-control" id="address" placeholder="" required>
+                                <input name="adresa" type="text" class="form-control" id="address" placeholder=""
+                                    required>
                                 <div class="invalid-feedback"> Please enter your shipping address. </div>
                             </div>
-                            <div class="mb-3">
-                                <label for="address2">Adresa 2 *</label>
-                                <input type="text" class="form-control" id="address2" placeholder=""> </div>
                             <div class="row">
                                 <div class="col-md-5 mb-3">
                                     <label for="country">Država *</label>
-                                    <select class="wide w-100" id="country">
-									<option value="Choose..." data-display="Select">Odaberi...</option>
-									<option value="United States">Srbija</option>
-                                    <option value="United States">Hrvatska</option>
-								</select>
+                                    <select name="drzava" class="wide w-100" id="country">
+                                        <option value="Choose..." data-display="Select">Odaberi...</option>
+                                        <option value="Srbija">Srbija</option>
+                                        <option value="Rusija">Rusija</option>
+                                    </select>
                                     <div class="invalid-feedback"> Please select a valid country. </div>
                                 </div>
                                 <div class="col-md-4 mb-3">
                                     <label for="zip">Poštanski broj *</label>
-                                    <input type="text" class="form-control" id="zip" placeholder="" required>
+                                    <input name="zip" type="text" class="form-control" id="zip" placeholder="" required>
                                     <div class="invalid-feedback"> Zip code required. </div>
-								</select>
+                                    </select>
                                     <div class="invalid-feedback"> Please provide a valid state. </div>
                                 </div>
-                               
+
                             </div>
                             <hr class="mb-4">
-                            <div class="custom-control custom-checkbox">
+                            <!-- <div class="custom-control custom-checkbox">
                                 <input type="checkbox" class="custom-control-input" id="same-address">
-                                <label class="custom-control-label" for="same-address">Adresa za dostavu je ista adresa kao i za naplatu</label>
+                                <label class="custom-control-label" for="same-address">Adresa za dostavu je ista adresa
+                                    kao i za naplatu</label>
                             </div>
                             <div class="custom-control custom-checkbox">
                                 <input type="checkbox" class="custom-control-input" id="save-info">
-                                <label class="custom-control-label" for="save-info">Sačuvaj ove informacije za sledeće naručivanje</label>
-                            </div>
-                            <hr class="mb-4">
+                                <label class="custom-control-label" for="save-info">Sačuvaj ove informacije za sledeće
+                                    naručivanje</label>
+                            </div> -->
+                            <!-- <hr class="mb-4"> -->
                             <div class="title"> <span>Način plaćanja</span> </div>
                             <div class="d-block my-3">
                                 <div class="custom-control custom-radio">
-                                    <input id="credit" name="paymentMethod" type="radio" class="custom-control-input" checked required>
+                                    <input id="credit" name="paymentMethod" type="radio" class="custom-control-input"
+                                        checked required>
                                     <label class="custom-control-label" for="credit">Kreditna kartica </label>
                                 </div>
                                 <div class="custom-control custom-radio">
-                                    <input id="debit" name="paymentMethod" type="radio" class="custom-control-input" required>
+                                    <input id="debit" name="paymentMethod" type="radio" class="custom-control-input"
+                                        required>
                                     <label class="custom-control-label" for="debit">Pouzećem</label>
                                 </div>
                                 <div class="custom-control custom-radio">
-                                    <input id="paypal" name="paymentMethod" type="radio" class="custom-control-input" required>
+                                    <input id="paypal" name="paymentMethod" type="radio" class="custom-control-input"
+                                        required>
                                     <label class="custom-control-label" for="paypal">Paypal</label>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-6 mb-3">
                                     <label for="cc-name">Ime na kartici</label>
-                                    <input type="text" class="form-control" id="cc-name" placeholder="Unesite vaše ime na kartici" required> <small class="text-muted">Puno ime i prezime na vašoj kartici</small>
+                                    <input type="text" class="form-control" id="cc-name"
+                                        placeholder="Unesite vaše ime na kartici" required> <small
+                                        class="text-muted">Puno ime i prezime na vašoj kartici</small>
                                     <div class="invalid-feedback"> Name on card is required </div>
                                 </div>
                                 <div class="col-md-6 mb-3">
@@ -276,7 +244,8 @@ include 'header.php';
                                     </div>
                                 </div>
                             </div>
-                            <hr class="mb-1"> </form>
+                            <hr class="mb-1">
+
                     </div>
                 </div>
                 <div class="col-sm-6 col-lg-6 mb-3">
@@ -288,16 +257,24 @@ include 'header.php';
                                 </div>
                                 <div class="mb-4">
                                     <div class="custom-control custom-radio">
-                                        <input id="shippingOption1" name="shipping-option" class="custom-control-input" checked="checked" type="radio">
-                                        <label class="custom-control-label" for="shippingOption1">Standardna dostava</label> <span class="float-right font-weight-bold">Besplatna</span> </div>
+                                        <input id="shippingOption1" name="dostava" class="custom-control-input"
+                                            value="0" checked="checked" type="radio">
+                                        <label class="custom-control-label" for="shippingOption1">Standardna
+                                            dostava</label> <span class="float-right font-weight-bold">Besplatna</span>
+                                    </div>
                                     <div class="ml-4 mb-2 small">(3-7 radnih dana)</div>
                                     <div class="custom-control custom-radio">
-                                        <input id="shippingOption2" name="shipping-option" class="custom-control-input" type="radio">
-                                        <label class="custom-control-label" for="shippingOption2">Brza dostava</label> <span class="float-right font-weight-bold">500din</span> </div>
+                                        <input id="shippingOption2" name="dostava" class="custom-control-input"
+                                            type="radio" value="500">
+                                        <label class="custom-control-label" for="shippingOption2">Brza dostava</label>
+                                        <span class="float-right font-weight-bold">500din</span> </div>
                                     <div class="ml-4 mb-2 small">(2-4 radnih dana)</div>
                                     <div class="custom-control custom-radio">
-                                        <input id="shippingOption3" name="shipping-option" class="custom-control-input" type="radio">
-                                        <label class="custom-control-label" for="shippingOption3">Dostava u toku dana ili sutra</label> <span class="float-right font-weight-bold">1000din</span> </div>
+                                        <input id="shippingOption3" name="dostava" class="custom-control-input"
+                                            type="radio" value="1000">
+                                        <label class="custom-control-label" for="shippingOption3">Dostava u toku dana
+                                            ili sutra</label> <span class="float-right font-weight-bold">1000din</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -307,21 +284,20 @@ include 'header.php';
                                     <h3>Konačan pregled korpe</h3>
                                 </div>
                                 <div class="rounded p-2 bg-light">
+                                    <?php if(isset($_SESSION['cart'])): ?>
+                                    <?php foreach($_SESSION['cart'] as $product): ?>
                                     <div class="media mb-2 border-bottom">
-                                        <div class="media-body"> <a href="detail.html"> Lorem ipsum dolor sit amet</a>
-                                            <div class="small text-muted">Price: $80.00 <span class="mx-2">|</span> Qty: 1 <span class="mx-2">|</span> Subtotal: $80.00</div>
+                                        <div class="media-body"> <a href="#"> <?php echo $product['name']?></a>
+                                            <div class="small text-muted">Cena: <?php echo $product['price']?> <span
+                                                    class="mx-2">|</span> Količina:
+                                                <?php echo $product['quantity']?> <span class="mx-2">|</span> Ukupno:
+                                                <?php echo ($product['price'] * $product['quantity'])?></div>
                                         </div>
                                     </div>
-                                    <div class="media mb-2 border-bottom">
-                                        <div class="media-body"> <a href="detail.html"> Lorem ipsum dolor sit amet</a>
-                                            <div class="small text-muted">Price: $60.00 <span class="mx-2">|</span> Qty: 1 <span class="mx-2">|</span> Subtotal: $60.00</div>
-                                        </div>
-                                    </div>
-                                    <div class="media mb-2">
-                                        <div class="media-body"> <a href="detail.html"> Lorem ipsum dolor sit amet</a>
-                                            <div class="small text-muted">Price: $40.00 <span class="mx-2">|</span> Qty: 1 <span class="mx-2">|</span> Subtotal: $40.00</div>
-                                        </div>
-                                    </div>
+                                    <?php endforeach ?>
+                                    <?php else: ?>
+                                    <h4>Korpa je prazna.</h4>
+                                    <?php endif ?>
                                 </div>
                             </div>
                         </div>
@@ -354,16 +330,19 @@ include 'header.php';
                                 </div>
                                 <div class="d-flex">
                                     <h4>Cena dostave</h4>
-                                    <div class="ml-auto font-weight-bold"> Free </div>
+                                    <div class="ml-auto font-weight-bold" id="dostava_polje"> Free </div>
                                 </div>
                                 <hr>
                                 <div class="d-flex gr-total">
                                     <h5>Ukupno za plaćanje</h5>
-                                    <div class="ml-auto h5"> $ 388 </div>
+                                    <div class="ml-auto h5" id="cena_polje"> <?php echo get_cart_total_price();?></div>
                                 </div>
-                                <hr> </div>
+                                <hr>
+                            </div>
                         </div>
-                        <div class="col-12 d-flex shopping-box"> <a href="checkout.html" class="ml-auto btn hvr-hover">Poruči</a> </div>
+                        <div class="col-12 d-flex shopping-box"> <a onclick="submitFormPay()"
+                                class="ml-auto btn hvr-hover">Poruči</a> </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -372,7 +351,7 @@ include 'header.php';
     </div>
     <!-- End Cart -->
 
-<?php
+    <?php
 include 'footerslajder.php';
 
 ?>
@@ -396,6 +375,23 @@ include 'footerslajder.php';
     <script src="js/form-validator.min.js"></script>
     <script src="js/contact-form-script.js"></script>
     <script src="js/custom.js"></script>
+    <script>
+        var dostavaPolje = document.getElementById('dostava_polje');
+        var cenaPolje = document.getElementById('cena_polje');
+        var staraCena = cenaPolje.innerHTML;
+
+        document.querySelectorAll('input[name="dostava"]').forEach(function (radio) {
+            radio.addEventListener('change', function () {
+                var novaCena = staraCena;
+                cenaPolje.innerHTML = novaCena + this.value;
+                dostavaPolje.innerHTML = this.value;
+            });
+        });
+
+        function submitFormPay() {
+            document.getElementById('forma').submit();
+        }
+    </script>
 </body>
 
 </html>
