@@ -72,10 +72,20 @@ include 'header.php';
     </div>
     <!-- End All Title Box -->
 
+    <?php if(isset($_SESSION['success'])): ?>
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>Uspeh!</strong> <?php echo $_SESSION['success']; ?>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <?php endif ?>
+    <?php unset($_SESSION['success']); ?>
+
     <!-- Start Cart  -->
     <div class="cart-box-main">
         <div class="container">
-            <div class="row new-account-login">
+            <!-- <div class="row new-account-login">
                 <div class="col-sm-6 col-lg-6 mb-3">
                     <div class="title-left">
                         <h3>Ovde se možete prijaviti</h3>
@@ -124,7 +134,7 @@ include 'header.php';
                         <button type="submit" class="btn hvr-hover">Registruj se</button>
                     </form>
                 </div>
-            </div>
+            </div> -->
             <div class="row">
                 <div class="col-sm-6 col-lg-6 mb-3">
                     <div class="checkout-address">
@@ -286,6 +296,7 @@ include 'header.php';
                                 <div class="rounded p-2 bg-light">
                                     <?php if(isset($_SESSION['cart'])): ?>
                                     <?php foreach($_SESSION['cart'] as $product): ?>
+                                    <input type="hidden" name="id" value="<?php echo $product['id'] ?>">
                                     <div class="media mb-2 border-bottom">
                                         <div class="media-body"> <a href="#"> <?php echo $product['name']?></a>
                                             <div class="small text-muted">Cena: <?php echo $product['price']?> <span
@@ -311,7 +322,7 @@ include 'header.php';
                                     <div class="ml-auto font-weight-bold">Ukupno</div>
                                 </div>
                                 <hr class="my-1">
-                                <div class="d-flex">
+                                <!-- <div class="d-flex">
                                     <h4>Za plaćanje</h4>
                                     <div class="ml-auto font-weight-bold"> $ 440 </div>
                                 </div>
@@ -327,15 +338,18 @@ include 'header.php';
                                 <div class="d-flex">
                                     <h4>Taksa</h4>
                                     <div class="ml-auto font-weight-bold"> $ 2 </div>
-                                </div>
+                                </div> -->
                                 <div class="d-flex">
                                     <h4>Cena dostave</h4>
                                     <div class="ml-auto font-weight-bold" id="dostava_polje"> Free </div>
                                 </div>
                                 <hr>
                                 <div class="d-flex gr-total">
+                                    <input type="hidden" name="cena" value="<?php echo get_cart_total_price();?>"
+                                        id="skrivena_cena">
                                     <h5>Ukupno za plaćanje</h5>
-                                    <div class="ml-auto h5" id="cena_polje"> <?php echo get_cart_total_price();?></div>
+                                    <div class="ml-auto h5" id="cena_polje">
+                                        <?php echo get_cart_total_price();?><span>rsd</span></div>
                                 </div>
                                 <hr>
                             </div>
@@ -378,13 +392,15 @@ include 'footerslajder.php';
     <script>
         var dostavaPolje = document.getElementById('dostava_polje');
         var cenaPolje = document.getElementById('cena_polje');
+        var cena = document.getElementById('skrivena_cena');
         var staraCena = cenaPolje.innerHTML;
 
         document.querySelectorAll('input[name="dostava"]').forEach(function (radio) {
             radio.addEventListener('change', function () {
                 var novaCena = staraCena;
-                cenaPolje.innerHTML = novaCena + this.value;
-                dostavaPolje.innerHTML = this.value;
+                cenaPolje.innerHTML = parseInt(novaCena) + parseInt(this.value) + "rsd";
+                dostavaPolje.innerHTML = parseInt(this.value) + "rsd";
+                cena.value = cenaPolje.innerHTML;
             });
         });
 

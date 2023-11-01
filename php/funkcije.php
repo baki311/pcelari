@@ -39,6 +39,23 @@ function get_user_count($conn) {
     return $count;
 }
 
+function get_user_by_id($id, $conn) {    
+    $sql = "SELECT * FROM korisnik WHERE KorisnikID = :id";
+    $stm = $conn->prepare($sql);
+    $stm->execute(['id' => $id]);
+    $user = $stm->fetch(PDO::FETCH_ASSOC);
+
+    return $user;
+}
+
+
+function get_count_from_table($table, $conn) {
+    $sql = "SELECT COUNT(*) FROM $table";
+    $res = $conn->query($sql);
+    $count = $res->fetchColumn();
+
+    return $count ?? '1';
+}
 
 //---------------AUTENTIFIKACIJA FUNKCIJE -------------
     //Registracija korisnika
@@ -175,6 +192,11 @@ function get_cart_count() {
     return 0;
 }
 
+function redirect_back() {
+    header('Location: ' . $_SERVER['HTTP_REFERER']);
+    exit();
+}
+
 //Dodaje proizvod u korpu
 function add_product_to_cart($productId) {    
     global $conn;
@@ -188,12 +210,33 @@ function add_product_to_cart($productId) {
         $_SESSION['cart'][$productId]['quantity'] += 1;
     } else {    
         $_SESSION['cart'][$productId] = $productDetails;
-    }    
-    
-    print_r($_SESSION['cart']);        
-
+    }              
+    redirect_back();
 }
 
+
+//Vraca sve porudzbine
+function get_all_orders($conn) {
+    $sql = "SELECT * FROM porudzbina";
+
+    $stm = $conn->prepare($sql);
+    $stm->execute();
+    $orders = $stm->fetchAll(PDO::FETCH_ASSOC);
+    
+    if(empty($orders) || $orders === null)
+        return null;
+            
+    return $orders;
+}
+
+function change_order_status($statusName, $porudzbinaId, $conn) {
+    $sql = "UPDATE porudzbina SET Status = :status WHERE PorudzbinaID= :id";
+
+    $stm = $conn->prepare($sql);
+    $stm->execute(['status' => $statusName, 'id' => $porudzbinaId]);   
+    
+    redirect_back();
+}
 
 
 ?>
