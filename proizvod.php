@@ -2,8 +2,7 @@
 session_start();
 
 if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['kategorija'])) {    
-    $products = get_all_products_by_categoryid($_GET['kategorija'], $conn);   
-    print_r($products);
+    $products = get_all_products_by_categoryid($_GET['kategorija'], $conn);    
 }
 
 ?>
@@ -119,6 +118,7 @@ include 'header.php';
                                     <div class="row">
                                         <?php if(!empty($products)):
                                             foreach($products as $product): ?>
+
                                         <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
                                             <div class="products-single fix">
                                                 <div class="box-img-hover">
@@ -136,12 +136,20 @@ include 'header.php';
                                                                     title="Dodaj na listu želja"><i
                                                                         class="far fa-heart"></i></a></li>
                                                         </ul>
-                                                        <a class="cart" href="#">Dodaj u korpu</a>
+                                                        <form id="forma<?php echo $product['ProizvodID']?>"
+                                                            action="php/korpaFunkcije.php" method="post">
+                                                            <input type="hidden" name="id"
+                                                                value="<?php echo $product['ProizvodID']; ?>">
+                                                            <input type="hidden" name="add_to_cart" value="1">
+                                                            <a class="cart" style="cursor: pointer;"
+                                                                onclick="submitCartForm(<?php echo $product['ProizvodID']; ?>)">Dodaj
+                                                                u korpu</a>
+                                                        </form>
                                                     </div>
                                                 </div>
                                                 <div class="why-text">
                                                     <h4><?php echo $product['NazivProizvoda'] ?></h4>
-                                                    <h5> <?php echo $product['CenaProizvoda'] ?></h5>
+                                                    <h5> <?php echo $product['CenaProizvoda'] ?> RSD</h5>
                                                 </div>
                                             </div>
                                         </div>
@@ -233,6 +241,11 @@ include 'footerslajder.php';
     <script src="js/form-validator.min.js"></script>
     <script src="js/contact-form-script.js"></script>
     <script src="js/custom.js"></script>
+    <script>
+        function submitCartForm(productId) {
+            document.getElementById('forma' + productId).submit();
+        }
+    </script>
 </body>
 
 </html>
