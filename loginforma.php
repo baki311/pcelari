@@ -1,4 +1,5 @@
 <?php
+session_start();
 require 'php/app.php';
 ?>
 <html>
@@ -7,6 +8,9 @@ require 'php/app.php';
 <style lang="en" type="text/css" id="dark-mode-custom-style"></style>
 <style lang="en" type="text/css" id="dark-mode-native-style"></style>
 <style lang="en" type="text/css" id="dark-mode-native-sheet"></style>
+<script src="https://unpkg.com/just-validate@latest/dist/just-validate.production.min.js" defer></script>
+<script src="js/validation.js" defer></script>
+
 
 <head>
   <title>Login Page</title>
@@ -60,20 +64,30 @@ require 'php/app.php';
           <div class="card-body">
             <h2 class="h4 mb-1">Prijavite se<img src="images/pcelaanimacija.jpg"> </h2>
             <h4><a href="index.php">Nazad na početnu stranicu</a></h4>
-
             <hr>
+
+            <?php if(isset($_SESSION['error'])):?>
+            <span class="text-danger">
+              <?php echo htmlspecialchars($_SESSION['error'])  ?></span>
+            <?php endif ?>
+            <?php clear_session_error();?>
+
+
             <h3 class="fs-base pt-4 pb-2">Unesite email i lozinku</h3>
 
-            <form class="needs-validation" action="php/autentifikacija.php" method="post">
+            <!-- login pocetak -->
+            <form id="login_form" class="needs-validation" action="php/autentifikacija.php" method="post">
               <div class="input-group mb-3"><i
                   class="ci-mail position-absolute top-50 translate-middle-y text-muted fs-base ms-3"></i>
-                <input name="email" class="form-control rounded-start" type="email" placeholder="Email" required="">
+                <input id="email" name="email" class="form-control rounded-start" type="email" placeholder="Email"
+                  required value="">
               </div>
               <div class="input-group mb-3"><i
                   class="ci-locked position-absolute top-50 translate-middle-y text-muted fs-base ms-3"></i>
                 <div class="password-toggle w-100">
-                  <input class="form-control" name="lozinka" type="password" placeholder="Lozinka" required="">
-
+                  <input id="lozinka" class="form-control" name="lozinka" type="password" placeholder="Lozinka"
+                    required>
+                  <input type="hidden" name="prijava">
                   <!-- <label class="password-toggle-btn" aria-label="Show/hide password">
                     <input class="password-toggle-check" type="checkbox"><span class="password-toggle-indicator"></span>
                   </label> -->
@@ -87,11 +101,10 @@ require 'php/app.php';
               </div> -->
               <hr class="mt-4">
               <div class="text-end pt-4">
-                <button class="btn btn-primary" type="submit" name="prijava"><i
-                    class="ci-sign-in me-2 ms-n21"></i>Prijava</button>
+                <button class="btn btn-primary" type="submit"><i class="ci-sign-in me-2 ms-n21"></i>Prijava</button>
               </div>
-
             </form>
+            <!-- login kraj -->
           </div>
         </div>
       </div>
@@ -99,18 +112,18 @@ require 'php/app.php';
         <h2 class="h4 mb-3">Nemate nalog? Registrujte se..</h2>
         <p class="fs-sm text-muted mb-4">Ovde se možete registrovati..</p>
 
-
-        <form action="php/autentifikacija.php" method="post">
+        <!-- registracija pocetak -->
+        <form id="register_form" action="php/autentifikacija.php" method="post">
           <div class="row gx-4 gy-3">
             <div class="col-sm-6">
-              <label class="form-label" for="reg-fn">Ime</label>
-              <input class="form-control" name="Ime" type="text" required="" id="reg-fn">
+              <label class="form-label" for="ime">Ime</label>
+              <input class="form-control" name="Ime" type="text" required="" id="ime">
               <div class="invalid-feedback">Molim Vas unesite vaše ime!</div>
             </div>
 
             <div class="col-sm-6">
-              <label class="form-label" for="reg-ln">Prezime</label>
-              <input class="form-control" name="Prezime" type="text" required="" id="reg-ln">
+              <label class="form-label" for="prezime">Prezime</label>
+              <input class="form-control" name="Prezime" type="text" required="" id="prezime">
               <div class="invalid-feedback">Molim Vas unesite vaše prezime!</div>
             </div>
 
@@ -121,33 +134,31 @@ require 'php/app.php';
             </div>
 
             <div class="col-sm-6">
-              <label class="form-label" for="reg-phone">Broj telefona</label>
-              <input class="form-control" name="Telefon" type="text" required="" id="reg-phone">
+              <label class="form-label" for="telefon">Broj telefona</label>
+              <input class="form-control" name="Telefon" type="text" required="" id="telefon">
               <div class="invalid-feedback">Molim Vas unesite vaš broj telefona!!</div>
             </div>
 
             <div class="col-sm-6">
-              <label class="form-label" for="reg-phone">Adresa</label>
-              <input class="form-control" name="Adresa" type="text" required="" id="reg-phone">
+              <label class="form-label" for="adresa">Adresa</label>
+              <input class="form-control" name="Adresa" type="text" required="" id="adresa">
               <div class="invalid-feedback">Molim Vas unesite vašu adresu!!</div>
             </div>
             <div class="col-sm-6">
-              <label class="form-label" for="reg-password">Šifra</label>
-              <input class="form-control" name="Sifra" type="password" required="" id="reg-password">
+              <label class="form-label" for="reg-lozinka">Šifra</label>
+              <input class="form-control" name="Sifra" type="password" required="" id="reg-lozinka">
               <div class="invalid-feedback">Molim Vas unesite vašu šifru!</div>
             </div>
-
+            <input type="hidden" name="registracija">
             <div class="text-end pt-4">
-              <button class="btn btn-primary" type="submit" name="registracija"><i
-                  class="ci-sign-in me-2 ms-n21"></i>Registracija</button>
+              <button class="btn btn-primary" type="submit"><i class="ci-sign-in me-2 ms-n21"></i>Registracija</button>
             </div>
           </div>
         </form>
+        <!-- registracija kraj -->
       </div>
     </div>
   </div>
-
-
 
 </body>
 
