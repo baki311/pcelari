@@ -1,6 +1,3 @@
-<?php require 'php/app.php'; 
-session_start();
-?>
 <!DOCTYPE html>
 <html lang="en">
 <!-- Basic -->
@@ -72,135 +69,114 @@ include 'header.php';
     <!-- End All Title Box -->
 
     <!-- Start Shop Page  -->
-    <div class="shop-box-inner">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-9 col-lg-9 col-sm-12 col-xs-12 shop-content-right">
-                    <div class="right-product-box">
-                        <div class="product-item-filter row">
-                            <div class="col-12 col-sm-8 text-center text-sm-left">
-                                <div class="toolbar-sorter-right">
-                                    <span>Sortiraj </span>
-                                    <select id="basic" class="selectpicker show-tick form-control"
-                                        data-placeholder="$ USD">
-                                        <option data-display="Select">Ništa</option>
-                                        <option value="1">Med</option>
-                                        <option value="2">Med sa saćem</option>
-                                        <option value="3">Saće</option>
-                                        <option value="4">Propolis</option>
-                                    </select>
-                                </div>
-                                <p>Prikaži samo 4 rezultata</p>
-                            </div>
-                            <div class="col-12 col-sm-4 text-center text-sm-right">
-                                <ul class="nav nav-tabs ml-auto">
-                                    <li>
-                                        <a class="nav-link active" href="#grid-view" data-toggle="tab"> <i
-                                                class="fa fa-th"></i> </a>
-                                    </li>
-                                    <li>
-                                        <a class="nav-link" href="#list-view" data-toggle="tab"> <i
-                                                class="fa fa-list-ul"></i> </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
+<div class="shop-box-inner">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-9 col-lg-9 col-sm-12 col-xs-12 shop-content-right">
+                <div class="right-product-box">
+                    <div class="product-item-filter row">
+                        <div class="col-12 col-sm-8 text-center text-sm-left">
+                            <div class="toolbar-sorter-right">
+                                <span>Sortiraj </span>
+                                <select id="basic" class="selectpicker show-tick form-control" data-placeholder="$ USD">
+                                 <option data-display="Select">Ništa</option>
+                                 <option value="1">Med</option>
+                                 <option value="2">Med sa saćem</option>
+                                 <option value="3">Saće</option>
+                                 <option value="4">Propolis</option>
+                             </select>
+                         </div>
+                         <p>Prikaži samo 4 rezultata</p>
+                     </div>
+                     <div class="col-12 col-sm-4 text-center text-sm-right">
+                        <ul class="nav nav-tabs ml-auto">
+                            <li>
+                                <a class="nav-link active" href="#grid-view" data-toggle="tab"> <i class="fa fa-th"></i> </a>
+                            </li>
+                            <li>
+                                <a class="nav-link" href="#list-view" data-toggle="tab"> <i class="fa fa-list-ul"></i> </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
 
-                        <div class="product-categorie-box">
-                            <div class="tab-content">
-                                <div role="tabpanel" class="tab-pane fade show active" id="grid-view">
-                                    <div class="row">
-                                        <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
-                                            <div class="products-single fix">
-                                                <div class="box-img-hover">
-                                                    <div class="type-lb">
-                                                        <p class="sale">Košnica 10101</p>
-                                                    </div>
-                                                    <img src="images/kosnica.png" class="img-pcelinji" alt="Image">
-                                                    <div class="mask-icon">
-                                                        <ul>
-                                                            <li><a href="#" data-toggle="tooltip" data-placement="right"
-                                                                    title="Opširnije"><i class="fas fa-eye"></i></a>
-                                                            </li>
-                                                            <li><a href="#" data-toggle="tooltip" data-placement="right"
-                                                                    title="Dodaj na listu želja"><i
-                                                                        class="far fa-heart"></i></a></li>
-                                                        </ul>
-                                                        <a class="cart" href="#">Dodaj u korpu</a>
-                                                    </div>
-                                                </div>
-                                                <div class="why-text">
-                                                    <h4>Košnica 10101 bez zaštitne farbe</h4>
-                                                    <h5> 8.100din</h5>
-                                                </div>
+                <div class="product-categorie-box">
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane fade show active" id="grid-view">
+                            <div class="row">
+                                <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
+                                    <div class="products-single fix">
+                                        <div class="box-img-hover">
+                                            <div class="type-lb">
+                                                <p class="sale">Košnica 10101</p>
+                                            </div>
+                                            <img src="images/kosnica.png" class="img-pcelinji" alt="Image">
+                                            <div class="mask-icon">
+                                                <ul>
+                                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Opširnije"><i class="fas fa-eye"></i></a></li>
+                                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Dodaj na listu želja"><i class="far fa-heart"></i></a></li>
+                                                </ul>
+                                                <a class="cart" href="#">Dodaj u korpu</a>
                                             </div>
                                         </div>
-                                        <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
-                                            <div class="products-single fix">
-                                                <div class="box-img-hover">
-                                                    <div class="type-lb">
-                                                        <p class="sale">Košnica 10100</p>
-                                                    </div>
-                                                    <img src="images/kosnice-2.jpg" class="img-pcelinji" alt="Image">
-                                                    <div class="mask-icon">
-                                                        <ul>
-                                                            <li><a href="#" data-toggle="tooltip" data-placement="right"
-                                                                    title="Opširnije"><i class="fas fa-eye"></i></a>
-                                                            </li>
-                                                            <li><a href="#" data-toggle="tooltip" data-placement="right"
-                                                                    title="Dodaj na listu želja"><i
-                                                                        class="far fa-heart"></i>
-                                                        </ul>
-                                                        <a class="cart" href="#">Dodaj u korpu</a>
-                                                    </div>
-                                                </div>
-                                                <div class="why-text">
-                                                    <h4>Košnica 10100 bez zaštitne farbe</h4>
-                                                    <h5> 8.500din</h5>
+                                        <div class="why-text">
+                                            <h4>Košnica 10101 bez zaštitne farbe</h4>
+                                            <h5> 8.100din</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
+                                    <div class="products-single fix">
+                                        <div class="box-img-hover">
+                                            <div class="type-lb">
+                                                <p class="sale">Košnica 10100</p>
+                                            </div>
+                                            <img src="images/kosnice-2.jpg" class="img-pcelinji" alt="Image">
+                                            <div class="mask-icon">
+                                                <ul>
+                                                 <li><a href="#" data-toggle="tooltip" data-placement="right" title="Opširnije"><i class="fas fa-eye"></i></a></li>
+                                                 <li><a href="#" data-toggle="tooltip" data-placement="right" title="Dodaj na listu želja"><i class="far fa-heart"></i>   </ul>
+                                                    <a class="cart" href="#">Dodaj u korpu</a>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
-                                            <div class="products-single fix">
-                                                <div class="box-img-hover">
-                                                    <div class="type-lb">
-                                                        <p class="sale">SUD ZA PARAFINISANJE</p>
-                                                    </div>
-                                                    <img src="images/parafin.webp" class="img-pcelinji" alt="Image">
-                                                    <div class="mask-icon">
-                                                        <ul>
-                                                            <li><a href="#" data-toggle="tooltip" data-placement="right"
-                                                                    title="Opširnije"><i class="fas fa-eye"></i></a>
-                                                            </li>
-                                                            <li><a href="#" data-toggle="tooltip" data-placement="right"
-                                                                    title="Dodaj na listu želja"><i
-                                                                        class="far fa-heart"></i>
-                                                        </ul>
-                                                        <a class="cart" href="#">Dodaj u korpu</a>
-                                                    </div>
-                                                </div>
-                                                <div class="why-text">
-                                                    <h4>Sud za parafinisanje nastavaka</h4>
-                                                    <h5> 55.150din</h5>
-                                                </div>
+                                            <div class="why-text">
+                                                <h4>Košnica 10100 bez zaštitne farbe</h4>
+                                                <h5> 8.500din</h5>
                                             </div>
                                         </div>
-                                        <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
-                                            <div class="products-single fix">
-                                                <div class="box-img-hover">
-                                                    <div class="type-lb">
-                                                        <p class="new">Novo</p>
-                                                    </div>
-                                                    <img src="images/sonda.jpg" class="img-mlec" alt="Image">
-                                                    <div class="mask-icon">
-                                                        <ul>
-                                                            <li><a href="#" data-toggle="tooltip" data-placement="right"
-                                                                    title="Opširnije"><i class="fas fa-eye"></i></a>
-                                                            </li>
-                                                            <li><a href="#" data-toggle="tooltip" data-placement="right"
-                                                                    title="Dodaj na listu želja"><i
-                                                                        class="far fa-heart"></i>
-                                                        </ul>
+                                    </div>
+                                    <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
+                                        <div class="products-single fix">
+                                            <div class="box-img-hover">
+                                                <div class="type-lb">
+                                                    <p class="sale">SUD ZA PARAFINISANJE</p>
+                                                </div>
+                                                <img src="images/parafin.webp" class="img-pcelinji" alt="Image">
+                                                <div class="mask-icon">
+                                                    <ul>
+                                                     <li><a href="#" data-toggle="tooltip" data-placement="right" title="Opširnije"><i class="fas fa-eye"></i></a></li>
+                                                     <li><a href="#" data-toggle="tooltip" data-placement="right" title="Dodaj na listu želja"><i class="far fa-heart"></i>
+                                                     </ul>
+                                                     <a class="cart" href="#">Dodaj u korpu</a>
+                                                 </div>
+                                             </div>
+                                             <div class="why-text">
+                                                <h4>Sud za parafinisanje nastavaka</h4>
+                                                <h5> 55.150din</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
+                                        <div class="products-single fix">
+                                            <div class="box-img-hover">
+                                                <div class="type-lb">
+                                                    <p class="new">Novo</p>
+                                                </div>
+                                                <img src="images/sonda.jpg" class="img-mlec" alt="Image">
+                                                <div class="mask-icon">
+                                                    <ul>
+                                                     <li><a href="#" data-toggle="tooltip" data-placement="right" title="Opširnije"><i class="fas fa-eye"></i></a></li>
+                                                     <li><a href="#" data-toggle="tooltip" data-placement="right" title="Dodaj na listu želja"><i class="far fa-heart"></i>   </ul>
                                                         <a class="cart" href="#">Dodaj u korpu</a>
                                                     </div>
                                                 </div>
@@ -218,183 +194,152 @@ include 'header.php';
                                                     </div>
                                                     <img src="images/kosnicafarba.jpeg" class="img-mlec" alt="Image">
                                                     <div class="mask-icon">
-                                                        <ul>
-                                                            <li><a href="#" data-toggle="tooltip" data-placement="right"
-                                                                    title="Opširnije"><i class="fas fa-eye"></i></a>
-                                                            </li>
-                                                            <li><a href="#" data-toggle="tooltip" data-placement="right"
-                                                                    title="Dodaj na listu želja"><i
-                                                                        class="far fa-heart"></i>
-                                                        </ul>
-                                                        <a class="cart" href="#">Dodaj u korpu</a>
+                                                     <ul>
+                                                         <li><a href="#" data-toggle="tooltip" data-placement="right" title="Opširnije"><i class="fas fa-eye"></i></a></li>
+                                                         <li><a href="#" data-toggle="tooltip" data-placement="right" title="Dodaj na listu želja"><i class="far fa-heart"></i>   </ul>
+                                                            <a class="cart" href="#">Dodaj u korpu</a>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="why-text">
-                                                    <h4>Košnica sa zaštitnom farbom</h4>
-                                                    <h5> 10.500din</h5>
+                                                    <div class="why-text">
+                                                        <h4>Košnica sa zaštitnom farbom</h4>
+                                                <h5> 10.500din</h5>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
-                                            <div class="products-single fix">
-                                                <div class="box-img-hover">
-                                                    <div class="type-lb">
-                                                        <p class="sale">Nosač za ramove</p>
-                                                    </div>
-                                                    <img src="images/dryacjpg.jpg" class="img-mlec" alt="Image">
-                                                    <div class="mask-icon">
-                                                        <ul>
-                                                            <li><a href="#" data-toggle="tooltip" data-placement="right"
-                                                                    title="Opširnije"><i class="fas fa-eye"></i></a>
-                                                            </li>
-                                                            <li><a href="#" data-toggle="tooltip" data-placement="right"
-                                                                    title="Dodaj na listu želja"><i
-                                                                        class="far fa-heart"></i>
-                                                        </ul>
-                                                        <a class="cart" href="#">Dodaj u korpu</a>
+                                            <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
+                                                <div class="products-single fix">
+                                                    <div class="box-img-hover">
+                                                        <div class="type-lb">
+                                                            <p class="sale">Nosač za ramove</p>
+                                                        </div>
+                                                        <img src="images/dryacjpg.jpg" class="img-mlec" alt="Image">
+                                                        <div class="mask-icon">
+                                                            <ul>
+                                                             <li><a href="#" data-toggle="tooltip" data-placement="right" title="Opširnije"><i class="fas fa-eye"></i></a></li>
+                                                             <li><a href="#" data-toggle="tooltip" data-placement="right" title="Dodaj na listu želja"><i class="far fa-heart"></i>   </ul>
+                                                                <a class="cart" href="#">Dodaj u korpu</a>
+                                                            </div>
+                                                        </div>
+                                                        <div class="why-text">
+                                                            <h4>Nosač za ramove, jednodelni</h4>
+                                                            <h5> 650din</h5>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                                <div class="why-text">
-                                                    <h4>Nosač za ramove, jednodelni</h4>
-                                                    <h5> 650din</h5>
+                                                <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
+                                                    <div class="products-single fix">
+                                                        <div class="box-img-hover">
+                                                            <div class="type-lb">
+                                                                <p class="sale">Matična rešetka</p>
+                                                            </div>
+                                                            <img src="images/maticnaresetka.jpg" class="img-mlec" alt="Image">
+                                                            <div class="mask-icon">
+                                                                <ul>
+                                                                 <li><a href="#" data-toggle="tooltip" data-placement="right" title="Opširnije"><i class="fas fa-eye"></i></a></li>
+                                                                 <li><a href="#" data-toggle="tooltip" data-placement="right" title="Dodaj na listu želja"><i class="far fa-heart"></i>   </ul>
+                                                                    <a class="cart" href="#">Dodaj u korpu</a>
+                                                                </div>
+                                                            </div>
+                                                            <div class="why-text">
+                                                                <h4>Matična rešetka</h4>
+                                                                <h5> 1.700din</h5>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
+                                                        <div class="products-single fix">
+                                                            <div class="box-img-hover">
+                                                                <div class="type-lb">
+                                                                    <p class="sale">Vrcaljka</p>
+                                                                </div>
+                                                                <img src="images/vrcaljka.jpg" class="img-mlec" alt="Image">
+                                                                <div class="mask-icon">
+                                                                   <ul>
+                                                                     <li><a href="#" data-toggle="tooltip" data-placement="right" title="Opširnije"><i class="fas fa-eye"></i></a></li>
+                                                                     <li><a href="#" data-toggle="tooltip" data-placement="right" title="Dodaj na listu želja"><i class="far fa-heart"></i>   </ul>
+                                                                        <a class="cart" href="#">Dodaj u korpu</a>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="why-text">
+                                                                    <h4>Tangencijalna vrcaljka</h4>
+                                                                    <h5> 28.000din</h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
+                                                            <div class="products-single fix">
+                                                                <div class="box-img-hover">
+                                                                    <div class="type-lb">
+                                                                        <p class="sale">Sakupljač polena</p>
+                                                                    </div>
+                                                                    <img src="images/sakupljac.jpg" class="img-mlec" alt="Image">
+                                                                    <div class="mask-icon">
+                                                                       <ul>
+                                                                         <li><a href="#" data-toggle="tooltip" data-placement="right" title="Opširnije"><i class="fas fa-eye"></i></a></li>
+                                                                         <li><a href="#" data-toggle="tooltip" data-placement="right" title="Dodaj na listu želja"><i class="far fa-heart"></i>   </ul>
+                                                                            <a class="cart" href="#">Dodaj u korpu</a>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="why-text">
+                                                                        <h4>Sakupljać polena</h4>
+                                                                        <h5> 730din</h5>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
+                                               
                                             </div>
                                         </div>
-                                        <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
-                                            <div class="products-single fix">
-                                                <div class="box-img-hover">
-                                                    <div class="type-lb">
-                                                        <p class="sale">Matična rešetka</p>
-                                                    </div>
-                                                    <img src="images/maticnaresetka.jpg" class="img-mlec" alt="Image">
-                                                    <div class="mask-icon">
-                                                        <ul>
-                                                            <li><a href="#" data-toggle="tooltip" data-placement="right"
-                                                                    title="Opširnije"><i class="fas fa-eye"></i></a>
-                                                            </li>
-                                                            <li><a href="#" data-toggle="tooltip" data-placement="right"
-                                                                    title="Dodaj na listu želja"><i
-                                                                        class="far fa-heart"></i>
-                                                        </ul>
-                                                        <a class="cart" href="#">Dodaj u korpu</a>
-                                                    </div>
-                                                </div>
-                                                <div class="why-text">
-                                                    <h4>Matična rešetka</h4>
-                                                    <h5> 1.700din</h5>
-                                                </div>
+                                    </div>
+                               
+                                <div class="col-xl-3 col-lg-3 col-sm-12 col-xs-12 sidebar-shop-left">
+                                    <div class="product-categori">
+                                        <div class="search-product">
+                                            <form action="#">
+                                                <input class="form-control" placeholder="Pretraži ovde..." type="text">
+                                                <button type="submit"> <i class="fa fa-search"></i> </button>
+                                            </form>
+                                        </div>
+                                        <div class="filter-sidebar-left">
+                                            <div class="title-left">
+                                                <h3>Kategorija</h3>
+                                            </div>
+                                            <div class="list-group list-group-collapse list-group-sm list-group-tree" id="list-group-men" data-children=".sub-men">
+                                            
+                                                 <a href="#" class="list-group-item list-group-item-action"> Košnice  <small class="text-muted">(1) </small></a>
+                                                <a href="#" class="list-group-item list-group-item-action"> Oprema za pčelinjak <small class="text-muted">(1)</small></a>
+                                                <a href="#" class="list-group-item list-group-item-action"> Cediljke  <small class="text-muted">(1) </small></a>
+                                                <a href="#" class="list-group-item list-group-item-action"> Pčelinji nastavci <small class="text-muted">(1)</small></a>
+                           
                                             </div>
                                         </div>
-                                        <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
-                                            <div class="products-single fix">
-                                                <div class="box-img-hover">
-                                                    <div class="type-lb">
-                                                        <p class="sale">Vrcaljka</p>
-                                                    </div>
-                                                    <img src="images/vrcaljka.jpg" class="img-mlec" alt="Image">
-                                                    <div class="mask-icon">
-                                                        <ul>
-                                                            <li><a href="#" data-toggle="tooltip" data-placement="right"
-                                                                    title="Opširnije"><i class="fas fa-eye"></i></a>
-                                                            </li>
-                                                            <li><a href="#" data-toggle="tooltip" data-placement="right"
-                                                                    title="Dodaj na listu želja"><i
-                                                                        class="far fa-heart"></i>
-                                                        </ul>
-                                                        <a class="cart" href="#">Dodaj u korpu</a>
-                                                    </div>
-                                                </div>
-                                                <div class="why-text">
-                                                    <h4>Tangencijalna vrcaljka</h4>
-                                                    <h5> 28.000din</h5>
-                                                </div>
+                                        <div class="filter-price-left">
+                                            <div class="title-left">
+                                                <h3>Cena</h3>
                                             </div>
-                                        </div>
-                                        <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
-                                            <div class="products-single fix">
-                                                <div class="box-img-hover">
-                                                    <div class="type-lb">
-                                                        <p class="sale">Sakupljač polena</p>
-                                                    </div>
-                                                    <img src="images/sakupljac.jpg" class="img-mlec" alt="Image">
-                                                    <div class="mask-icon">
-                                                        <ul>
-                                                            <li><a href="#" data-toggle="tooltip" data-placement="right"
-                                                                    title="Opširnije"><i class="fas fa-eye"></i></a>
-                                                            </li>
-                                                            <li><a href="#" data-toggle="tooltip" data-placement="right"
-                                                                    title="Dodaj na listu želja"><i
-                                                                        class="far fa-heart"></i>
-                                                        </ul>
-                                                        <a class="cart" href="#">Dodaj u korpu</a>
-                                                    </div>
-                                                </div>
-                                                <div class="why-text">
-                                                    <h4>Sakupljać polena</h4>
-                                                    <h5> 730din</h5>
-                                                </div>
+                                            <div class="price-box-slider">
+                                                <div id="slider-range"></div>
+                                                <p>
+                                                    <input type="text" id="amount" readonly style="border:0; color:#fbb714; font-weight:bold;">
+                                                    <button class="btn hvr-hover" type="submit">Primeni</button>
+                                                </p>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                     </div>
-                </div>
+                    <!-- End Shop Page -->
 
-                <div class="col-xl-3 col-lg-3 col-sm-12 col-xs-12 sidebar-shop-left">
-                    <div class="product-categori">
-                        <div class="search-product">
-                            <form action="#">
-                                <input class="form-control" placeholder="Pretraži ovde..." type="text">
-                                <button type="submit"> <i class="fa fa-search"></i> </button>
-                            </form>
-                        </div>
-                        <div class="filter-sidebar-left">
-                            <div class="title-left">
-                                <h3>Kategorija</h3>
-                            </div>
-                            <div class="list-group list-group-collapse list-group-sm list-group-tree"
-                                id="list-group-men" data-children=".sub-men">
-
-                                <a href="#" class="list-group-item list-group-item-action"> Košnice <small
-                                        class="text-muted">(1) </small></a>
-                                <a href="#" class="list-group-item list-group-item-action"> Oprema za pčelinjak <small
-                                        class="text-muted">(1)</small></a>
-                                <a href="#" class="list-group-item list-group-item-action"> Cediljke <small
-                                        class="text-muted">(1) </small></a>
-                                <a href="#" class="list-group-item list-group-item-action"> Pčelinji nastavci <small
-                                        class="text-muted">(1)</small></a>
-
-                            </div>
-                        </div>
-                        <div class="filter-price-left">
-                            <div class="title-left">
-                                <h3>Cena</h3>
-                            </div>
-                            <div class="price-box-slider">
-                                <div id="slider-range"></div>
-                                <p>
-                                    <input type="text" id="amount" readonly
-                                        style="border:0; color:#fbb714; font-weight:bold;">
-                                    <button class="btn hvr-hover" type="submit">Primeni</button>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- End Shop Page -->
-
-    <?php
+ <?php
 include 'footerslajder.php';
 
 ?>
 
-
+    
 
     <a href="#" id="back-to-top" title="Back to top" style="display: none;">&uarr;</a>
 
