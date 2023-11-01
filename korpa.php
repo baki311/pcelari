@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<?php require_once 'php/konekcija.php'; ?>
 <html lang="en">
 <!-- Basic -->
 
