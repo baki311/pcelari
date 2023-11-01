@@ -1,3 +1,12 @@
+<?php require 'php/app.php'; 
+session_start();
+
+if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['kategorija'])) {    
+    $products = get_all_products_by_categoryid($_GET['kategorija'], $conn);   
+    print_r($products);
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <!-- Basic -->
