@@ -47,7 +47,7 @@ registerForm
         },
         {
             rule: "customRegexp",
-            value: /[a-z]/gi,
+            value: /(06)[0-9]\/[0-9]{3}\-[0-9]{2}\-[0-9]{2}/,
         },
     ])
     .addField("#adresa", [
