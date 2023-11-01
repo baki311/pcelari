@@ -1,5 +1,7 @@
+<?php require 'php/app.php'; 
+session_start();
+?>
 <!DOCTYPE html>
-<?php require_once 'php/konekcija.php'; ?>
 <html lang="en">
 <!-- Basic -->
 
@@ -41,7 +43,7 @@
 include 'gornjiheader.php';
 include 'header.php'; 
 ?>
-   
+
 
     <!-- Start Top Search -->
     <div class="top-search">
@@ -89,78 +91,44 @@ include 'header.php';
                                 </tr>
                             </thead>
                             <tbody>
+                                <?php if(isset($_SESSION['cart'])): ?>
+                                <?php foreach($_SESSION['cart'] as $product): ?>
                                 <tr>
                                     <td class="thumbnail-img">
                                         <a href="#">
-									<img class="img-fluid" src="images/img-pro-01.jpg" alt="" />
-								</a>
+                                            <img class="img-fluid" src="<?php echo $product['image'] ?>" alt="" />
+                                        </a>
                                     </td>
                                     <td class="name-pr">
                                         <a href="#">
-									Lorem ipsum dolor sit amet
-								</a>
+                                            <?php echo $product['name'] ?>
+                                        </a>
                                     </td>
                                     <td class="price-pr">
-                                        <p>$ 80.0</p>
+                                        <p><?php echo $product['price'] ?>RSD</p>
                                     </td>
-                                    <td class="quantity-box"><input type="number" size="4" value="1" min="0" step="1" class="c-input-text qty text"></td>
+                                    <td class="quantity-box"><input type="number" size="4"
+                                            value="<?php echo $product['quantity'] ?>" min="0" step="1"
+                                            class="c-input-text qty text"></td>
                                     <td class="total-pr">
-                                        <p>$ 80.0</p>
+                                        <p><?php echo ($product['price'] * $product['quantity']) ?>RSD</p>
                                     </td>
-                                    <td class="remove-pr">
-                                        <a href="#">
-									<i class="fas fa-times"></i>
-								</a>
-                                    </td>
+                                    <form id="remove<?php echo $product['id'] ?>" action="php/korpaFunkcije.php"
+                                        method="post">
+                                        <input type="hidden" name="remove">
+                                        <input type="hidden" name="id" value="<?php echo $product['id'] ?>">
+                                        <td class="remove-pr">
+                                            <a style="cursor: pointer;"
+                                                onclick="submitDeleteForm(<?php echo $product['id'] ?>)">
+                                                <i class="fas fa-times"></i>
+                                            </a>
+                                        </td>
+                                    </form>
                                 </tr>
-                                <tr>
-                                    <td class="thumbnail-img">
-                                        <a href="#">
-									<img class="img-fluid" src="images/img-pro-02.jpg" alt="" />
-								</a>
-                                    </td>
-                                    <td class="name-pr">
-                                        <a href="#">
-									Lorem ipsum dolor sit amet
-								</a>
-                                    </td>
-                                    <td class="price-pr">
-                                        <p>$ 60.0</p>
-                                    </td>
-                                    <td class="quantity-box"><input type="number" size="4" value="1" min="0" step="1" class="c-input-text qty text"></td>
-                                    <td class="total-pr">
-                                        <p>$ 80.0</p>
-                                    </td>
-                                    <td class="remove-pr">
-                                        <a href="#">
-									<i class="fas fa-times"></i>
-								</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="thumbnail-img">
-                                        <a href="#">
-									<img class="img-fluid" src="images/img-pro-03.jpg" alt="" />
-								</a>
-                                    </td>
-                                    <td class="name-pr">
-                                        <a href="#">
-									Lorem ipsum dolor sit amet
-								</a>
-                                    </td>
-                                    <td class="price-pr">
-                                        <p>$ 30.0</p>
-                                    </td>
-                                    <td class="quantity-box"><input type="number" size="4" value="1" min="0" step="1" class="c-input-text qty text"></td>
-                                    <td class="total-pr">
-                                        <p>$ 80.0</p>
-                                    </td>
-                                    <td class="remove-pr">
-                                        <a href="#">
-									<i class="fas fa-times"></i>
-								</a>
-                                    </td>
-                                </tr>
+                                <?php endforeach ?>
+                                <?php else: ?>
+                                <h4>Korpa je prazna.</h4>
+                                <?php endif ?>
                             </tbody>
                         </table>
                     </div>
@@ -171,7 +139,8 @@ include 'header.php';
                 <div class="col-lg-6 col-sm-6">
                     <div class="coupon-box">
                         <div class="input-group input-group-sm">
-                            <input class="form-control" placeholder="Unesite kod sa kupona" aria-label="Coupon code" type="text">
+                            <input class="form-control" placeholder="Unesite kod sa kupona" aria-label="Coupon code"
+                                type="text">
                             <div class="input-group-append">
                                 <button class="btn btn-theme" type="button">Dodaj kupon</button>
                             </div>
@@ -192,7 +161,7 @@ include 'header.php';
                         <h3>Pregled porudžbine</h3>
                         <div class="d-flex">
                             <h4>Ukupno</h4>
-                            <div class="ml-auto font-weight-bold"> $ 130 </div>
+                            <div class="ml-auto font-weight-bold"> <?php echo get_cart_total_price(); ?> RSD </div>
                         </div>
                         <div class="d-flex">
                             <h4>Popust</h4>
@@ -214,21 +183,23 @@ include 'header.php';
                         <hr>
                         <div class="d-flex gr-total">
                             <h5>Ukupno za plaćanje</h5>
-                            <div class="ml-auto h5"> $ 388 </div>
+                            <div class="ml-auto h5"> <?php echo get_cart_total_price(); ?> RSD</div>
                         </div>
-                        <hr> </div>
+                        <hr>
+                    </div>
                 </div>
-                <div class="col-12 d-flex shopping-box"><a href="kupovinakorpa.php" class="ml-auto btn hvr-hover">Završi kupovinu</a> </div>
+                <div class="col-12 d-flex shopping-box"><a href="kupovinakorpa.php" class="ml-auto btn hvr-hover">Završi
+                        kupovinu</a> </div>
             </div>
 
         </div>
     </div>
     <!-- End Cart -->
-<?php
+    <?php
 include 'footerslajder.php';
 
 ?>
-    
+
 
     <a href="#" id="back-to-top" title="Back to top" style="display: none;">&uarr;</a>
 
@@ -248,6 +219,11 @@ include 'footerslajder.php';
     <script src="js/form-validator.min.js"></script>
     <script src="js/contact-form-script.js"></script>
     <script src="js/custom.js"></script>
+    <script>
+        function submitDeleteForm(id) {
+            document.getElementById('remove' + id).submit();
+        }
+    </script>
 </body>
 
 </html>

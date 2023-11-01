@@ -21,10 +21,12 @@
                       <?php  if(is_user_logged_in()): ?>
                       <a style="color: #fff;" href="">
                           <?php echo $_SESSION['email'] ?></a>
+                      <a style="color: #fff;" href="dashboard.php">
+                          Kontrolna tabla</a>
                       <form action="php/autentifikacija.php" method="post">
                           <button type="submit" name="logout"
-                              style="border: none; background: none; color: #fff; cursor: pointer;">Odjavi se</button>
-                              <button type="" name="dashboard"><a href="dashboard/dashboard.php"style="border: none; background: none; color: black; cursor: pointer;">Dashboard</a></button>
+                              style="border: none; background: none; color: #fff; cursor: pointer;">Odjavi
+                              se</button>
                       </form>
                       <?php else: ?>
                       <a style="color: #fff;" href="loginforma.php">Registrujte se ovde</a>
